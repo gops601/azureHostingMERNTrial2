@@ -11,16 +11,11 @@ const PORT = process.env.PORT;
 const app = express();
 app.use(morgan("dev"));
 app.use(cors());
-app.get("/", (req, res) => {
-  res.send("hello");
-});
+
 app.use("/api", userRoute);
 app.use("/api", postroute);
 
-// app.use(express.static('./frontend/build'));
-// app.get("*",(req,res)=>{
-//     res.sendFile(path.resolve(__dirname,"frontend","build","index.html"))
-// });
+
 
 app.listen(PORT, () => {
   console.log(`${PORT} is up and running`);

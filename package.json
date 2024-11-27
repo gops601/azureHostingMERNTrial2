@@ -9,7 +9,7 @@
   "author": "Tiya",
   "license": "ISC",
   "engines": {
-    "node": "^16.0.0"
+   "node": "v20.18.0"
   },
   "dependencies": {
     "cors": "^2.8.5",

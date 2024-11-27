@@ -2,14 +2,14 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "author": "Tiya",
   "license": "ISC",
   "engines": {
-    "node": "16.x"
+    "node": "^16.0.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -18,5 +18,9 @@
     "mongoose": "^8.2.2",
     "morgan": "^1.10.0",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
   }
 }

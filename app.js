@@ -11,7 +11,9 @@ const PORT = process.env.PORT;
 const app = express();
 app.use(morgan("dev"));
 app.use(cors());
-
+app.get('/',(req,res)=>{
+  res.send("Hello world");
+})
 app.use("/api", userRoute);
 app.use("/api", postroute);
 

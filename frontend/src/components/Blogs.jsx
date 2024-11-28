@@ -9,7 +9,7 @@ const Blogs = () => {
   useEffect(() => {
     // Fetch all blogs from the backend
     axios
-      .get("http://localhost:3005/api/blogs") // Ensure this URL is correct for your backend
+      .get("/api/blogs") // Ensure this URL is correct for your backend
       .then((res) => {
         console.log(res.data); // Check the response structure
         setBlogs(res.data); // Set the blogs to state

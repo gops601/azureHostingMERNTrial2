@@ -14,16 +14,16 @@ const app = express();
 // const __dirname = path.dirname(__filename);
 app.use(morgan("dev"));
 app.use(cors());
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello world");
+// });
 app.use("/api", userRoute);
 app.use("/api", postroute);
 
-// app.use('/',express.static(path.join(__dirname,"./build")));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./build/index.html"));
-// });
+app.use('/',express.static(path.join(__dirname,"./build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./build/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`${PORT} is up and running`);

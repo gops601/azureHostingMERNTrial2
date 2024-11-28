@@ -11,7 +11,7 @@ const AddBlog = () => {
   const addData = () => {
     console.log(post);
     axios
-      .post("https://mern-ict-e5fmhsg9bmbxagc4.centralus-01.azurewebsites.net/api/add", post)
+      .post("/api/add", post)
       .then((res) => {
         alert(res.data.message);
       })

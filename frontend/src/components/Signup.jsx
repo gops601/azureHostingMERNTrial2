@@ -12,7 +12,7 @@ const Signup = () => {
 
   const addHandler = ()=>{
     console.log("clicked",users);
-    axios.post("https://mern-ict-e5fmhsg9bmbxagc4.centralus-01.azurewebsites.net/api",users)
+    axios.post("/api",users)
     .then((res)=>{
       console.log(res);
       alert(res.data.message);

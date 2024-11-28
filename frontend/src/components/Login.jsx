@@ -14,7 +14,7 @@ const Login = () => {
 
   const addHandler = () => {
     console.log(user);
-    axios.post("https://mern-ict-e5fmhsg9bmbxagc4.centralus-01.azurewebsites.net/api/login",user)
+    axios.post("/api/login",user)
     .then((res)=>{
       alert(res.data.message)
       navigate("/blogs")

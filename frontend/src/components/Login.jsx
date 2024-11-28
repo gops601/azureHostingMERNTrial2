@@ -1,69 +1,110 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography, Link } from "@mui/material";
 import axios from "axios";
-import {Link,useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
+  const [error, setError] = useState("");
 
   const inputHandler = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   const addHandler = () => {
-    console.log(user);
-    axios.post("/api/login",user)
-    .then((res)=>{
-      alert(res.data.message)
-      navigate("/blogs")
-    })
-    .catch((err)=>{
-      console.log(err)
-    })
+    axios
+      .post("/api/login", user)
+      .then((res) => {
+        alert(res.data.message);
+        navigate("/blogs");
+      })
+      .catch((err) => {
+        setError("Login failed. Please check your credentials.");
+      });
   };
 
   return (
-    <div>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        backgroundColor: "#f5f5f5",
+        padding: "2rem",
+      }}
+    >
       <Box
-        component="form"
         sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
+          width: "100%",
+          maxWidth: "400px",
+          padding: "2rem",
+          backgroundColor: "white",
+          borderRadius: "8px",
+          boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
         }}
-        noValidate
-        autoComplete="off"
-        style={{ margin: "10% 20% 30% 40%" }}
       >
-        <Typography variant="h5" style={{ color: "darkblue" }}>
-         Hello Maya  Blog App Login
+        <Typography variant="h4" color="purple" align="center" gutterBottom>
+          Welcome to Blog App
         </Typography>
-        <div>
-          <TextField
-            id="outlined-required"
-            label="Email"
-            name="username"
-            onChange={inputHandler}
-          />
-        </div>
-        <div>
-          <TextField
-            id="outlined-disabled"
-            label="Password"
-            type="password"
-            name="password"
-            onChange={inputHandler}
-          />
-        </div>
-        <Button variant="contained" color="secondary" onClick={addHandler}>
+        <Typography variant="body2" color="textSecondary" align="center" mb={2}>
+          Please login to continue
+        </Typography>
+
+        <TextField
+          fullWidth
+          margin="normal"
+          variant="outlined"
+          label="Email"
+          name="username"
+          onChange={inputHandler}
+        />
+        <TextField
+          fullWidth
+          margin="normal"
+          variant="outlined"
+          label="Password"
+          type="password"
+          name="password"
+          onChange={inputHandler}
+        />
+
+        {error && (
+          <Typography
+            variant="body2"
+            color="error"
+            align="center"
+            sx={{ marginTop: "0.5rem" }}
+          >
+            {error}
+          </Typography>
+        )}
+
+        <Button
+          fullWidth
+          variant="contained"
+          color="secondary"
+          onClick={addHandler}
+          sx={{ marginTop: "1.5rem", padding: "0.75rem" }}
+        >
           Login
         </Button>
-        <br /><br /><br />
-        <Typography>
-          <Link to={'/sign'}>New users Click here</Link>
+
+        <Typography
+          variant="body2"
+          align="center"
+          sx={{ marginTop: "1rem", color: "text.secondary" }}
+        >
+          New here?{" "}
+          <Link href="/sign" underline="hover" color="secondary">
+            Create an account
+          </Link>
         </Typography>
       </Box>
-    </div>
+    </Box>
   );
 };
 

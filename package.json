@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-
- 
   "author": "Tiya",
   "license": "ISC",
-  
   "dependencies": {
     "cors": "latest",
     "dotenv": "latest",

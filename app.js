@@ -7,11 +7,8 @@ const userRoute = require("./Routes/userRoutes");
 const postroute = require("./Routes/postRoute");
 const PORT = process.env.PORT || 3005;
 const path = require("path");
-// const fileURLToPath = require("url");
-
 const app = express();
-// const __filename = fileURLToPath(require.meta.url);
-// const __dirname = path.dirname(__filename);
+
 app.use(morgan("dev"));
 app.use(cors());
 // app.get("/", (req, res) => {
@@ -20,7 +17,7 @@ app.use(cors());
 app.use("/api", userRoute);
 app.use("/api", postroute);
 
-app.use('/',express.static(path.join(__dirname,"./build")));
+app.use("/", express.static(path.join(__dirname, "./build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./build/index.html"));
 });
